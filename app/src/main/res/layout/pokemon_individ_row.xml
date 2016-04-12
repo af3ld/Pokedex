@@ -45,8 +45,8 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
-            android:background="@color/redundantWhite"
-            android:contentDescription="@string/IVcontent"
+            android:background="@android:color/white"
+            android:contentDescription="@string/imageDescription"
             android:padding="1dp" />
 
         <LinearLayout
