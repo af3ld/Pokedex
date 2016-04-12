@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo == null || !networkInfo.isConnected()){
-            Toast.makeText(this, R.string.networkError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.networkError, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, R.string.networkSuccess, Toast.LENGTH_SHORT).show();
         }
         Pokedex pokedex = new Pokedex();
         mAdapter = new PokemonAdapter(this, pokedex.getPokemen());
         listView.setAdapter(mAdapter);
-
-
     }
+
+
 }
