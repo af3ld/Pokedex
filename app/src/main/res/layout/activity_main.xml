@@ -10,7 +10,7 @@
     tools:context="com.lclark.pokedex.MainActivity">
 
     <ListView
-        android:id="@+id/pokemon_listview"
+        android:id="@+id/activity_main_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
