@@ -3,4 +3,6 @@
     <string name="heightString">height</string>
     <string name="weightString">weight</string>
     <string name="imageDescription">portrait of the pokemon</string>
+    <string name="networkError">Unable to connect to the network</string>
+    <string name="networkSuccess">network connected successfully</string>
 </resources>

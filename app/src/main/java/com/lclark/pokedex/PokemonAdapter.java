@@ -22,7 +22,6 @@ public class PokemonAdapter extends BaseAdapter {
     private ArrayList<Pokemon> mPokemons;
     private Context mContext;
 
-
     public PokemonAdapter(Context context, ArrayList<Pokemon> pokemons) {
         mPokemons = pokemons;
         mContext = context;
