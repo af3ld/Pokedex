@@ -13,4 +13,17 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="tradingCard_ll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="tradingCard_textView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 </resources>

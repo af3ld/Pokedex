@@ -73,7 +73,7 @@ public class PokemonAdapter extends BaseAdapter {
         viewHolder.name.setText(pokemon.getName(true));
         viewHolder.id.setText(pokemon.getId());
 
-        String weight = mContext.getString(R.string.weightString, pokemon.getWeigth());
+        String weight = mContext.getString(R.string.weightString, pokemon.getWeight());
 
         viewHolder.weight.setText(weight);
         String height = mContext.getString(R.string.heightString, pokemon.getHeight());

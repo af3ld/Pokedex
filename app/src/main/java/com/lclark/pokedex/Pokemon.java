@@ -3,7 +3,6 @@ package com.lclark.pokedex;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.lang.reflect.Field;
 import java.util.regex.Pattern;
 
 /**
@@ -15,7 +14,7 @@ public class Pokemon implements Parcelable {
     public String mPokemon_id;
     public String mPokemon_speciesId;
     public String mPokemon_height;
-    public String mPokemon_weigth;
+    public String mPokemon_weight;
 
     public Pokemon(String csvString) {
         String[] split = csvString.trim().split(",");
@@ -24,7 +23,7 @@ public class Pokemon implements Parcelable {
         this.mPokemon_id = split[1];
         this.mPokemon_speciesId = split[2];
         this.mPokemon_height = split[3];
-        this.mPokemon_weigth = split[4];
+        this.mPokemon_weight = split[4];
     }
 
     public String getName(boolean toUpper) {
@@ -59,12 +58,12 @@ public class Pokemon implements Parcelable {
         this.mPokemon_height = mPokemon_height;
     }
 
-    public String getWeigth() {
-        return mPokemon_weigth;
+    public String getWeight() {
+        return mPokemon_weight;
     }
 
-    public void setWeigth(String mPokemon_weigth) {
-        this.mPokemon_weigth = mPokemon_weigth;
+    public void setWeight(String mPokemon_weigth) {
+        this.mPokemon_weight = mPokemon_weigth;
     }
 
     public String getImageUrl() {
@@ -108,7 +107,7 @@ public class Pokemon implements Parcelable {
         dest.writeString(mPokemon_id);
         dest.writeString(mPokemon_speciesId);
         dest.writeString(mPokemon_height);
-        dest.writeString(mPokemon_weigth);
+        dest.writeString(mPokemon_weight);
     }
 
     public static final Parcelable.Creator<Pokemon> CREATOR = new Creator<Pokemon>(){
@@ -128,6 +127,6 @@ public class Pokemon implements Parcelable {
         mPokemon_id = source.readString();
         mPokemon_speciesId = source.readString();
         mPokemon_height = source.readString();
-        mPokemon_weigth = source.readString();
+        mPokemon_weight = source.readString();
     }
 }
