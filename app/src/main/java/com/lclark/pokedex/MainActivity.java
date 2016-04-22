@@ -1,18 +1,22 @@
 package com.lclark.pokedex;
 
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.activity_main_listview) ListView listView;
+//    @Bind(R.id.activity_main_listview) ListView listView;
     PokemonAdapter mAdapter;
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -20,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.activity_main_toolbar);
+        mToolbar.setSubtitle(R.string.author);
+        mToolbar.setTitle(getString(R.string.app_name));
+        setSupportActionBar(mToolbar);
+
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -30,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
         }
         Pokedex pokedex = new Pokedex();
         mAdapter = new PokemonAdapter(this, pokedex.getPokemen());
+        ListView listView = (ListView) findViewById(R.id.activity_main_listview);
         listView.setAdapter(mAdapter);
-    }
 
+
+    }
 
 }

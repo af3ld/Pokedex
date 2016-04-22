@@ -39,7 +39,7 @@ public class PokemonAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -73,10 +73,10 @@ public class PokemonAdapter extends BaseAdapter {
         viewHolder.name.setText(pokemon.getName(true));
         viewHolder.id.setText(pokemon.getId());
 
-        String weight = mContext.getString(R.string.weightString, pokemon.getWeight());
+        String weight = mContext.getString(R.string.weight_title, pokemon.getWeight());
 
         viewHolder.weight.setText(weight);
-        String height = mContext.getString(R.string.heightString, pokemon.getHeight());
+        String height = mContext.getString(R.string.height_title, pokemon.getHeight());
         viewHolder.height.setText(height);
 
 

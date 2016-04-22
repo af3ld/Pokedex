@@ -731,13 +731,21 @@ public class Pokedex {
             "721,volcanion,721,17,1950"};
 
     private ArrayList<Pokemon> pokemen;
-    private  int mIndex = 0;
+    private int mPokemonIndex = 0;
+
 
     public Pokedex(){
         pokemen = new ArrayList<>();
         for (String pokeStr : mPokemonStrs){
             pokemen.add(new Pokemon(pokeStr));
         }
+    }
+
+    public Pokemon getPokemon() {
+        mPokemonIndex = mPokemonIndex % pokemen.size();
+        Pokemon pokemon =  pokemen.get(mPokemonIndex);
+        mPokemonIndex++;
+        return pokemon;
     }
 
     public ArrayList<Pokemon> getPokemen() {
