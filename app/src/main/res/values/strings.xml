@@ -7,4 +7,6 @@
     <string name="networkSuccess">network connected successfully</string>
     <string name="height_title">H: %s</string>
     <string name="weight_title">W: %s</string>
+    <string name="row_id_hint">id</string>
+    <string name="row_name_hint">name</string>
 </resources>

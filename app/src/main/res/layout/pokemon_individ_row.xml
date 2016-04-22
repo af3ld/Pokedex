@@ -16,7 +16,6 @@
             android:id="@+id/top_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/pokemon_row_image"
             android:orientation="horizontal">
 
             <TextView
@@ -24,7 +23,7 @@
                 style="@style/pokeRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="id"
+                android:hint="@string/row_id_hint"
                 android:textSize="20sp" />
 
             <TextView
@@ -32,7 +31,7 @@
                 style="@style/pokeRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="name"
+                android:hint="@string/row_name_hint"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -41,11 +40,11 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/poke_row_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:id="@+id/pokemon_row_image"
+            android:layout_width="@dimen/image_side"
+            android:layout_height="@dimen/image_side"
             android:layout_alignParentEnd="true"
-            android:background="@android:color/white"
+            android:background="@color/pokédex_red_dark"
             android:contentDescription="@string/imageDescription"
             android:padding="1dp" />
 
@@ -54,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_ll"
-            android:layout_toLeftOf="@+id/poke_row_image"
+            android:layout_toStartOf="@+id/pokemon_row_image"
             android:orientation="horizontal">
 
             <TextView

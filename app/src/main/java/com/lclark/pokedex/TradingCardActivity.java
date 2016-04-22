@@ -40,7 +40,6 @@ public class TradingCardActivity extends AppCompatActivity {
             ab.setTitle(pokemon.getName(true));
             ab.setSubtitle(pokemon.getSpeciesId());
         }
-
     }
 
     @Override

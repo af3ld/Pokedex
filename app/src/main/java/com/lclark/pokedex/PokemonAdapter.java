@@ -53,7 +53,7 @@ public class PokemonAdapter extends BaseAdapter {
             TextView idTextView = (TextView) convertView.findViewById(R.id.poke_row_id_textview);
             TextView weightTextView = (TextView) convertView.findViewById(R.id.poke_row_weight_textview);
             TextView heightTextView = (TextView) convertView.findViewById(R.id.poke_row_height_textview);
-            ImageView imageView = (ImageView) convertView.findViewById(R.id.poke_row_image);
+            ImageView imageView = (ImageView) convertView.findViewById(R.id.pokemon_row_image);
 
             viewHolder = new ViewHolder();
             viewHolder.name = nameTextView;

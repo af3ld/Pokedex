@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="pokédex_red">#e8ff2b2f</color>
+    <color name="pokédex_red_dark">#f289181a</color>
 </resources>
