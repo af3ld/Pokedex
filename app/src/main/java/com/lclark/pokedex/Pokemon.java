@@ -19,8 +19,8 @@ public class Pokemon implements Parcelable {
     public Pokemon(String csvString) {
         String[] split = csvString.trim().split(",");
 
-        this.mPokemon_name = split[0];
-        this.mPokemon_id = split[1];
+        this.mPokemon_id = split[0];
+        this.mPokemon_name = split[1];
         this.mPokemon_speciesId = split[2];
         this.mPokemon_height = split[3];
         this.mPokemon_weight = split[4];

@@ -9,11 +9,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/pokédex_red"
+        android:background="@drawable/card_gradient"
         android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/pokemon_row_image"
+            android:layout_width="@dimen/image_side"
+            android:layout_height="@dimen/image_side"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/imageDescription"
+            android:padding="1dp" />
 
         <LinearLayout
             android:id="@+id/top_ll"
+            android:layout_toStartOf="@id/pokemon_row_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -21,35 +30,27 @@
             <TextView
                 android:id="@+id/poke_row_id_textview"
                 style="@style/pokeRow"
+                android:hint="@string/row_id_hint"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/row_id_hint"
-                android:textSize="20sp" />
+                android:paddingRight="20dp"/>
 
             <TextView
                 android:id="@+id/poke_row_name_textview"
                 style="@style/pokeRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="@string/row_name_hint"
                 android:textAlignment="center"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/pokemon_row_image"
-            android:layout_width="@dimen/image_side"
-            android:layout_height="@dimen/image_side"
-            android:layout_alignParentEnd="true"
-            android:background="@color/pokédex_red_dark"
-            android:contentDescription="@string/imageDescription"
-            android:padding="1dp" />
 
         <LinearLayout
-            style="@style/pokeRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_ll"
@@ -59,21 +60,21 @@
             <TextView
                 android:id="@+id/poke_row_height_textview"
                 style="@style/pokeRow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/heightString"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
 
             <TextView
                 android:id="@+id/poke_row_weight_textview"
                 style="@style/pokeRow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:hint="@string/weightString" />
+                android:layout_weight="7"
+                android:hint="@string/weightString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
 
