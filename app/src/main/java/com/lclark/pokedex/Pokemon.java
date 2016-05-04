@@ -21,7 +21,6 @@ public class Pokemon implements Parcelable {
 
         this.mPokemon_id = split[0];
         this.mPokemon_name = split[1];
-        this.mPokemon_speciesId = split[2];
         this.mPokemon_height = split[3];
         this.mPokemon_weight = split[4];
     }
@@ -42,28 +41,13 @@ public class Pokemon implements Parcelable {
         this.mPokemon_id = mPokemon_id;
     }
 
-    public String getSpeciesId() {
-        return mPokemon_speciesId;
-    }
-
-    public void setSpeciesId(String mPokemon_speciesId) {
-        this.mPokemon_speciesId = mPokemon_speciesId;
-    }
 
     public String getHeight() {
         return mPokemon_height;
     }
 
-    public void setHeight(String mPokemon_height) {
-        this.mPokemon_height = mPokemon_height;
-    }
-
     public String getWeight() {
         return mPokemon_weight;
-    }
-
-    public void setWeight(String mPokemon_weigth) {
-        this.mPokemon_weight = mPokemon_weigth;
     }
 
     public String getImageUrl() {

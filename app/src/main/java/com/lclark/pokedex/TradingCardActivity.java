@@ -3,6 +3,7 @@ package com.lclark.pokedex;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,37 +30,38 @@ public class TradingCardActivity extends AppCompatActivity {
     public static final String ARG_identifier = "Pokemon, plz";
     private Pokemon pokemon;
 
-    @Bind(R.id.tradingcard_ab1)
-    TextView ab1TextView;
-    @Bind(R.id.tradingcard_ab2)
-    TextView ab2TextView;
-    @Bind(R.id.tradingcard_height)
-    TextView heightTextview;
-    @Bind(R.id.tradingcard_weight)
-    TextView weightTextview;
-    @Bind(R.id.tradingcard_image)
-    ImageView pokemonImageview;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tradingcard);
 
-        String allData = getIntent().getParcelableExtra(ARG_identifier);
-        String[] abilities = JSONStringToPokemon(allData);
+        String allData = getIntent().getStringExtra(ARG_identifier);
 
-        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.activity_main_toolbar);
+        String[] abilities = JSONStringToPokemon(allData);
+        if (pokemon != null) {
+            Log.d(TAG, pokemon.toString());
+        }
+
+
+        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar)
+                findViewById(R.id.tradingcard_toolbar);
         mToolbar.setSubtitle(pokemon.getId());
         mToolbar.setTitle(pokemon.getName(true));
         mToolbar.setNavigationIcon(R.mipmap.pokeball);
         mToolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.pokédex_red));
         mToolbar.setSubtitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.pokédex_red));
+        TextView ab1textView = (TextView) findViewById(R.id.tradingcard_ab1);
+        TextView ab2TextView = (TextView) findViewById(R.id.tradingcard_ab2);
+        TextView heightTextView = (TextView) findViewById(R.id.tradingcard_height);
+        TextView weightTextView = (TextView) findViewById(R.id.tradingcard_weight);
+        ImageView pokemonImageview = (ImageView) findViewById(R.id.tradingcard_image);
+
 
         Picasso.with(this).load(pokemon.getImageUrl()).fit().centerInside().into(pokemonImageview);
-        ab1TextView.setText(abilities[0]);
+        ab1textView.setText(abilities[0]);
         ab2TextView.setText(abilities[1]);
-        heightTextview.setText(getString(R.string.height_title, pokemon.getHeight()));
-        weightTextview.setText(getString(R.string.weight_title, pokemon.getWeight()));
+        heightTextView.setText(getString(R.string.height_title, pokemon.getHeight()));
+        weightTextView.setText(getString(R.string.weight_title, pokemon.getWeight()));
     }
 
     @Override
@@ -76,11 +78,11 @@ public class TradingCardActivity extends AppCompatActivity {
             JSONObject json = new JSONObject(jsonString);
             if (json.length() != 0) {
                 String[] prePokemon = {
-                        json.getJSONObject("id").opt("val").toString(),
-                        json.getJSONObject("name").opt("val").toString(),
-                        Integer.toString(0),
-                        json.getJSONObject("height").opt("val").toString(),
-                        json.getJSONObject("weight").opt("val").toString(),
+                        Integer.toString(json.getInt("id")),
+                        json.getString("name"),
+                        "",
+                        json.getString("height"),
+                        json.getString("weight"),
                 };
 
                 StringBuilder sb = new StringBuilder();
@@ -88,8 +90,11 @@ public class TradingCardActivity extends AppCompatActivity {
                     sb.append(aPrePokemon);
                     sb.append(',');
                 }
-                pokemon = new Pokemon(Arrays.toString(prePokemon));
-
+                pokemon = new Pokemon(sb.toString());
+                if (pokemon != null){
+                    Log.d(TAG, pokemon.getId() + " " + pokemon.getName(false)
+                    + " " + pokemon.getHeight() + " " + pokemon.getWeight());
+                }
                 JSONArray abilities = json.getJSONArray("abilities");
                 talent = new String[abilities.length()];
                 for (int i = 0; i < abilities.length(); i++) {
