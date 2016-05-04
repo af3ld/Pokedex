@@ -1,6 +1,7 @@
 package com.lclark.pokedex;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -15,13 +16,19 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-//    @Bind(R.id.activity_main_listview) ListView listView;
+
     PokemonAdapter mAdapter;
+    public Intent mIntent;
+    public JSONObject json;
     public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -52,9 +59,22 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                position++;
+                Log.d(TAG, getString(R.string.itemClicked) + position);
+                try {
+                    json = new Pokemon_JSON().execute(Integer.toString(position)).get();
+                    if (json != null){
+                        Log.d(TAG, json.toString());
+//                        Intent myIntent = new Intent(getBaseContext(), TradingCardActivity.class);
+//                        myIntent.putExtra(TradingCardActivity.ARG_identifier, json.toString());
+//                        startActivity(myIntent);
+                    }
+                } catch (InterruptedException | ExecutionException e) {
+                    Log.e(TAG, e.getLocalizedMessage());
+                }
             }
         });
     }
+
 
 }

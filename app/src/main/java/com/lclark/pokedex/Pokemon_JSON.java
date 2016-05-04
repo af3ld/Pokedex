@@ -28,10 +28,8 @@ public class Pokemon_JSON extends AsyncTask<String, Integer, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
-        if (jsonObject == null) {
-            Log.e(TAG, "JSONObject is null");
-        } else {
-            Log.d(TAG, "It worked!");
+        if (jsonObject == null){
+            Log.d(TAG, "Something failed amigo");
         }
     }
 
