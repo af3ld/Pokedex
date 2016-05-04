@@ -16,9 +16,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Pattern;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.activity_main_toolbar);
+        android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar)
+                findViewById(R.id.activity_main_toolbar);
         mToolbar.setSubtitle(R.string.author);
         mToolbar.setTitle(getString(R.string.app_name));
         mToolbar.setNavigationIcon(R.mipmap.pokeball);
@@ -45,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo == null || !networkInfo.isConnected()){
+        if (networkInfo == null || !networkInfo.isConnected()) {
             Toast.makeText(this, R.string.networkError, Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, R.string.networkSuccess, Toast.LENGTH_SHORT).show();
@@ -63,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, getString(R.string.itemClicked) + position);
                 try {
                     json = new Pokemon_JSON().execute(Integer.toString(position)).get();
-                    if (json != null){
+                    if (json != null) {
                         Log.d(TAG, json.toString());
-//                        Intent myIntent = new Intent(getBaseContext(), TradingCardActivity.class);
-//                        myIntent.putExtra(TradingCardActivity.ARG_identifier, json.toString());
-//                        startActivity(myIntent);
+                        Intent myIntent = new Intent(getApplicationContext(), TradingCardActivity.class);
+                        myIntent.putExtra(TradingCardActivity.ARG_identifier, json.toString());
+                        startActivity(myIntent);
                     }
                 } catch (InterruptedException | ExecutionException e) {
                     Log.e(TAG, e.getLocalizedMessage());

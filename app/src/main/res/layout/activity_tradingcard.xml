@@ -10,26 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="3" />
+        android:layout_weight="5" />
 
 
-    <LinearLayout
-        android:id="@+id/tradingcard_name_id_layout"
-        style="@style/tradingCard_ll">
-
-        <TextView
-            android:id="@+id/tradingcard_id"
-            style="@style/tradingCard_textView"/>
-
-        <TextView
-            android:id="@+id/tradingcard_name"
-            style="@style/tradingCard_textView"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/tradingcard_weight_height_layout"
-        style="@style/tradingCard_ll">
+        style="@style/tradingCard_ll"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/tradingcard_height"
@@ -37,6 +25,20 @@
 
         <TextView
             android:id="@+id/tradingcard_weight"
+            style="@style/tradingCard_textView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tradingcard_ablility_layout"
+        style="@style/tradingCard_ll"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/tradingcard_ab1"
+            style="@style/tradingCard_textView"  />
+
+        <TextView
+            android:id="@+id/tradingcard_ab2"
             style="@style/tradingCard_textView" />
     </LinearLayout>
 
