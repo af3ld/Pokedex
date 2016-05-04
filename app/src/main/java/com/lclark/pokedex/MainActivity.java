@@ -8,6 +8,9 @@ import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -46,8 +49,12 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new PokemonAdapter(this, pokedex.getPokemen());
         ListView listView = (ListView) findViewById(R.id.activity_main_listview);
         listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+            }
+        });
     }
 
 }
