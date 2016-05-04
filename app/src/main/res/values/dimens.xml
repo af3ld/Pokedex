@@ -3,4 +3,7 @@
     <dimen name="activity_horizontal_margin">5dp</dimen>
     <dimen name="activity_vertical_margin">5dp</dimen>
     <dimen name="image_side">60dp</dimen>
+
+    <dimen name="abilitySize">30sp</dimen>
+    <dimen name="measurementSize">20sp</dimen>
 </resources>

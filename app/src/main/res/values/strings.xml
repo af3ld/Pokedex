@@ -11,4 +11,10 @@
     <string name="row_id_hint">id</string>
     <string name="row_name_hint">name</string>
     <string name="itemClicked">"Item clicked at: "</string>
+    <string name="tradingcard_toolbar_str" formatted="false">#%s %s</string>
+    <string name="useless_pokemon_pt1">This pokemon</string>
+    <string name="useless_pokemon_pt2">is useless</string>
+    <string name="catchphrase">Gotta Catch \'em All</string>
+    <string name="onStart">Started Pokédex</string>
+    <string name="onFail">Something failed amigo</string>
 </resources>

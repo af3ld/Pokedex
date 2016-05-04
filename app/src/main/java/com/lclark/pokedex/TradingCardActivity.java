@@ -7,7 +7,11 @@ import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -38,18 +42,13 @@ public class TradingCardActivity extends AppCompatActivity {
         String allData = getIntent().getStringExtra(ARG_identifier);
 
         String[] abilities = JSONStringToPokemon(allData);
-        if (pokemon != null) {
-            Log.d(TAG, pokemon.toString());
-        }
-
 
         android.support.v7.widget.Toolbar mToolbar = (android.support.v7.widget.Toolbar)
                 findViewById(R.id.tradingcard_toolbar);
-        mToolbar.setSubtitle(pokemon.getId());
-        mToolbar.setTitle(pokemon.getName(true));
+        mToolbar.setTitle(getString(
+                R.string.tradingcard_toolbar_str, pokemon.getId(), pokemon.getName(true)));
         mToolbar.setNavigationIcon(R.mipmap.pokeball);
         mToolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.pokédex_red));
-        mToolbar.setSubtitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.pokédex_red));
         TextView ab1textView = (TextView) findViewById(R.id.tradingcard_ab1);
         TextView ab2TextView = (TextView) findViewById(R.id.tradingcard_ab2);
         TextView heightTextView = (TextView) findViewById(R.id.tradingcard_height);
@@ -58,8 +57,16 @@ public class TradingCardActivity extends AppCompatActivity {
 
 
         Picasso.with(this).load(pokemon.getImageUrl()).fit().centerInside().into(pokemonImageview);
-        ab1textView.setText(abilities[0]);
-        ab2TextView.setText(abilities[1]);
+        if (abilities.length >= 2) {
+            ab1textView.setText(abilities[0]);
+            ab2TextView.setText(abilities[1]);
+        } else if (abilities.length < 2 && abilities.length != 0){
+            ab2TextView.setText(abilities[0]);
+            ab1textView.setVisibility(View.INVISIBLE);
+        } else if (abilities.length == 0){
+            ab1textView.setText(R.string.useless_pokemon_pt1);
+            ab2TextView.setText(R.string.useless_pokemon_pt2);
+        }
         heightTextView.setText(getString(R.string.height_title, pokemon.getHeight()));
         weightTextView.setText(getString(R.string.weight_title, pokemon.getWeight()));
     }
@@ -91,15 +98,12 @@ public class TradingCardActivity extends AppCompatActivity {
                     sb.append(',');
                 }
                 pokemon = new Pokemon(sb.toString());
-                if (pokemon != null){
-                    Log.d(TAG, pokemon.getId() + " " + pokemon.getName(false)
-                    + " " + pokemon.getHeight() + " " + pokemon.getWeight());
-                }
                 JSONArray abilities = json.getJSONArray("abilities");
                 talent = new String[abilities.length()];
                 for (int i = 0; i < abilities.length(); i++) {
                     talent[i] = abilities.getJSONObject(i)
                             .getJSONObject("ability").getString("name");
+                    talent[i] = Pokemon.titlize(talent[i]);
                 }
                 return talent;
             }

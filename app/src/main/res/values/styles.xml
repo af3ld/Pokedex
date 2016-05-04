@@ -22,7 +22,19 @@
     <style name="tradingCard_textView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Hint</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="tradingCard_textViewMeasurements" parent="tradingCard_textView">
+        <item name="android:textSize">@dimen/measurementSize</item>
+
+    </style>
+
+    <style name="tradingCard_textViewAbilities" parent="tradingCard_textView">
+        <item name="android:textAlignment">center</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/abilitySize</item>
     </style>
 
 </resources>

@@ -54,7 +54,7 @@ public class Pokemon implements Parcelable {
         return "http://img.pokemondb.net/artwork/" + getName(false) + ".jpg";
     }
 
-    private static String titlize(String str) {
+    public static String titlize(String str) {
 
         if (str == null) {
             return null;

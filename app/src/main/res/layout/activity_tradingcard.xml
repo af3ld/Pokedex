@@ -7,7 +7,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/tradingcard_background_gradient">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tradingcard_toolbar"
@@ -15,16 +16,17 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/pokédex_red_dark"
         android:elevation="4dp"
+        android:textAlignment="center"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <ImageView
-        android:paddingTop="50dp"
         android:id="@+id/tradingcard_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="5" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="7"
+        />
 
 
     <LinearLayout
@@ -34,25 +36,30 @@
 
         <TextView
             android:id="@+id/tradingcard_height"
-            style="@style/tradingCard_textView"  />
+            style="@style/tradingCard_textViewMeasurements"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"/>
 
         <TextView
             android:id="@+id/tradingcard_weight"
-            style="@style/tradingCard_textView" />
+            style="@style/tradingCard_textViewMeasurements"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/tradingcard_ablility_layout"
         style="@style/tradingCard_ll"
-        android:layout_weight="3">
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/tradingcard_ab1"
-            style="@style/tradingCard_textView"  />
+            style="@style/tradingCard_textViewAbilities"
+            />
 
         <TextView
             android:id="@+id/tradingcard_ab2"
-            style="@style/tradingCard_textView" />
+            style="@style/tradingCard_textViewAbilities" />
     </LinearLayout>
 
 

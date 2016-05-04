@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     PokemonAdapter mAdapter;
-    public Intent mIntent;
     public JSONObject json;
+    private boolean hasInternet = true;
     public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -54,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo == null || !networkInfo.isConnected()) {
             Toast.makeText(this, R.string.networkError, Toast.LENGTH_LONG).show();
+            hasInternet = false;
         } else {
             Toast.makeText(this, R.string.networkSuccess, Toast.LENGTH_SHORT).show();
+            hasInternet = true;
         }
         Pokedex pokedex = new Pokedex();
         mAdapter = new PokemonAdapter(this, pokedex.getPokemen());
@@ -64,22 +66,26 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                position++;
-                Log.d(TAG, getString(R.string.itemClicked) + position);
-                try {
-                    json = new Pokemon_JSON().execute(Integer.toString(position)).get();
-                    if (json != null) {
-                        Log.d(TAG, json.toString());
-                        Intent myIntent = new Intent(getApplicationContext(), TradingCardActivity.class);
-                        myIntent.putExtra(TradingCardActivity.ARG_identifier, json.toString());
-                        startActivity(myIntent);
+                if (hasInternet) {
+                    position++;
+                    Log.d(TAG, getString(R.string.itemClicked) + position);
+                    try {
+                        json = new Pokemon_JSON(MainActivity.this)
+                                .execute(Integer.toString(position)).get();
+                        if (json != null) {
+                            Log.d(TAG, json.toString());
+                            Intent myIntent = new Intent(getApplicationContext(), TradingCardActivity.class);
+                            myIntent.putExtra(TradingCardActivity.ARG_identifier, json.toString());
+                            startActivity(myIntent);
+                        }
+                    } catch (InterruptedException | ExecutionException e) {
+                        Log.e(TAG, e.getLocalizedMessage());
                     }
-                } catch (InterruptedException | ExecutionException e) {
-                    Log.e(TAG, e.getLocalizedMessage());
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            R.string.networkError, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
-
 }
