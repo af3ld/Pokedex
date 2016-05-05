@@ -1,9 +1,7 @@
 package com.lclark.pokedex;
 
-import android.app.ActionBar;
+
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
@@ -14,20 +12,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-import java.util.regex.Pattern;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
 
     PokemonAdapter mAdapter;
     public JSONObject json;

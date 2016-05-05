@@ -21,7 +21,7 @@ import java.net.URL;
 public class Pokemon_JSON extends AsyncTask<String, Integer, JSONObject> {
 
     public static final String TAG = Pokemon_JSON.class.getSimpleName();
-    private final ProgressDialog progressDialog;
+    public final ProgressDialog progressDialog;
     private boolean isRunning = true;
     private Context mContext;
 
@@ -56,6 +56,7 @@ public class Pokemon_JSON extends AsyncTask<String, Integer, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
+        progressDialog.hide();
         if (jsonObject == null) {
             Log.d(TAG, mContext.getString(R.string.onFail));
         }
